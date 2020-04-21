@@ -59,26 +59,6 @@ if(isset($_POST['btn-save'])){
 
 
 
-    <?php
-  $user = new User($first_name, $last_name, $city);
-$display_data = $user->readAll();
-print_r($display_data);
-
-foreach($display_data as $display)
-{
-
-?>
-
-
-  
-            <tr>
-                <td>
-                    <?php echo $display['first_name']; ?></td>
-            </tr>
-            
-        </table>
-<?php
-}?>
     
 </body>
 </html>

@@ -49,11 +49,12 @@ class User implements crud{
         $array = array();
         $query = 'SELECT * FROM user';
         $res = mysqli_query($con->conn, $query);
-        while($row = mysqli_fetch_assoc($res)){
-                    $array[] = $row;
+        // while($row = mysqli_fetch_assoc($res)){
+        //             $array[] = $row;
 
-        }
-        return $array;
+        // }
+        // return $array;
+        return $res;
     }
     public function readUnique(){
         return null;
