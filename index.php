@@ -1,16 +1,5 @@
-<?php
-include_once 'DBConnector.php';
-include_once 'user.php';
-$con = new DBConnector;
-$user = new User('','','');
 
-$res=$user->readAll();
-
-
-    ?>
-
-
-    <!DOCTYPE html>
+<!DOCTYPE html>
 <html lang="en">
 <head>
   <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
@@ -25,46 +14,45 @@ $res=$user->readAll();
 <body>
 <nav>
     <div class="nav-wrapper">
-      <a href="index.php" class="brand-logo">trevorsaudi</a>
+    <a href="index.php" class="brand-logo">trevorsaudi</a>
       <ul id="nav-mobile" class="right hide-on-med-and-down">
         <li><a href="lab1.php">Input Table</a></li>
         <li><a href="display.php">Display Table</a></li>
       </ul>
     </div>
   </nav>
+  <div class="section no-pad-bot" id="index-banner">
+    <div class="container">
+      <br><br>
+      <h1 class="header center orange-text">LAB PRACTICALS</h1>
+      <div class="row center">
+        <h5 class="header col s12 light">All weekly labs for Internet Application Programming</h5>
+      </div>
+      <div class="row center">
+        <a href="lab1.php" id="download-button" class="btn-large waves-effect waves-light orange">View Lab 1</a>
+      </div>
+      <br><br>
 
-  <table class="highlight centered">
-        <thead>
-          <tr>
-              <th>First Name</th>
-              <th>Last Name</th>
-              <th>City</th>
-          </tr>
-        </thead>
-<?php
-        while($row=mysqli_fetch_array($res)){
-?>
-        <tbody>
-          <tr>
-            <td><?php echo $row["first_name"] ?></td> 
-            <td><?php echo $row["last_name"] ?></td> 
-            <td><?php echo $row["user_city"] ?></td>
-          </tr>
-
-          <?php
-        }
-        ?>
-        </tbody>
-      </table>
-
-  
+    </div>
+  </div>
 
 
 
-<!--  Scripts-->
+
+
+  <!--  Scripts-->
   <script src="https://code.jquery.com/jquery-2.1.1.min.js"></script>
   <script src="js/materialize.js"></script>
   <script src="js/init.js"></script>
 
   </body>
 </html>
+
+
+
+
+
+    
+</body>
+</html>
+

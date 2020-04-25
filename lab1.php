@@ -1,3 +1,56 @@
+
+    <!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1.0"/>
+  <title>Labs IAP</title>
+
+  <!-- CSS  -->
+  <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+  <link href="css/materialize.css" type="text/css" rel="stylesheet" media="screen,projection"/>
+  <link href="css/style.css" type="text/css" rel="stylesheet" media="screen,projection"/>
+</head>
+<body>
+<nav>
+    <div class="nav-wrapper">
+      <a href="index.php" class="brand-logo">trevorsaudi</a>
+      <ul id="nav-mobile" class="right hide-on-med-and-down">
+        <li><a href="lab1.php">Input Table</a></li>
+        <li><a href="display.php">Display Table</a></li>
+      </ul>
+    </div>
+  </nav>
+  
+
+  
+  <div class="row">
+    <form class="col s12" method="post">
+     
+      <div class="row">
+        <div class="input-field col s12">
+        <input type="text" name="first_name" required placeholder="First Name" />
+          <label for="disabled">First Name</label>
+        </div>
+      </div>
+      <div class="row">
+        <div class="input-field col s12">
+        <input type="text" name="last_name" required placeholder="Last Name" />
+          <label for="password">Last Name</label>
+        </div>
+      </div>
+      <div class="row">
+        <div class="input-field col s12">
+        <input type="text" name="city_name" required placeholder="City" />
+          <label for="email">City</label>
+        </div>
+      </div>
+   
+      
+<Button class="waves-effect waves-light btn"  type="submit" name="btn-save" required placeholder="Submit">Add Records</Button>
+    </form>
+  </div>
+        <!-- inputting details to the database -->
 <?php
 include_once 'DBConnector.php';
 include_once 'user.php';
@@ -18,43 +71,44 @@ if(isset($_POST['btn-save'])){
 
     //check if operation save occured successfully
     if($res){
-        echo "Save operation was successful";
+  
+?>
+<script>alert("Success")</script>
 
-    }else{
-        echo "An error occured";
-    }
+<?php
+}else{
+    ?>
+ <script>alert("Error")</script>
+
+  <?php
 }
 
 
-
+}
 
 ?>
 
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
-</head>
-<body>
-    <form action="" method="post">
-        <table align="center">
-            <tr>
-                <td><input type="text" name="first_name" required placeholder="First Name" /></td>
-            </tr>
-            <tr>
-                <td><input type="text" name="last_name" required placeholder="Last Name" /></td>
-            </tr>
-            <tr>
-                <td><input type="text" name="city_name" required placeholder="City" /></td>
-            </tr>
-            <tr>
-                <td><button type="submit" name="btn-save" required placeholder="Submit" >Submit</td>
-            </tr>
 
-        </table>
-    </form>
+
+
+<!--  Scripts-->
+  <script src="https://code.jquery.com/jquery-2.1.1.min.js"></script>
+  <script src="js/materialize.js"></script>
+  <script src="js/init.js"></script>
+  <script>
+  window.addEventListener("load", function () {
+  var all = document.querySelectorAll('span.close');
+  for (var btn of all) {
+    btn.addEventListener("click", function () {
+      var bar = this.parentElement;
+      bar.parentElement.removeChild(bar);
+    });
+  }
+});
+</script>
+  </body>
+</html>
+
 
 
 
