@@ -2,7 +2,7 @@
 include_once 'DBConnector.php';
 include_once 'user.php';
 $con = new DBConnector;
-$user = new User('','','');
+$user = new User('','','','','');
 
 $res=$user->readAll();
 

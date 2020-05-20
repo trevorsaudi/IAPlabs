@@ -2,6 +2,8 @@
         <?php
 include_once 'DBConnector.php';
 include_once 'user.php';
+include_once 'fileUploader.php';
+
 $con = new DBConnector;//Creating the database connection
 //code to insert data starts here
 
@@ -12,6 +14,10 @@ if(isset($_POST['btn-save'])){
     $username = $_POST['username'];
     $password = $_POST['password'];
 
+    // $utc_timestamp = $_POST['utc_timestamp'];
+    // $offset = $_POST['time_zone_offset'];
+
+
     // create a user object
     //we create the object using our constructor to initialize our variables further
 
@@ -21,9 +27,14 @@ if(isset($_POST['btn-save'])){
       header("Refresh:0");
       die();
     }
+
+
+    $uploader = new fileUploader();
+    $uploader->uploadFile();
+    $target_file = $uploader->target_file;
+  
    
-   
-    $res = $user->save($con->conn);
+    $res = $user->save($target_file);
 
 
     //check if operation save occured successfully
@@ -57,6 +68,8 @@ if(isset($_POST['btn-save'])){
           <!-- CSS  -->
           <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
           <link href="css/materialize.css" type="text/css" rel="stylesheet" media="screen,projection" />
+        <script src="https://ajax.googleapis.com/ajax/libs.jquery/1.12.4/jquery.min.js"></script>
+        <script type="text/javascript"src="timezone.js"></script>
           <link href="css/style.css" type="text/css" rel="stylesheet" media="screen,projection" />
         </head>
 
@@ -74,9 +87,8 @@ if(isset($_POST['btn-save'])){
 
 
           <div class="row">
-            <form class="col s12" method="post" name="user_details" id="user_details" onsubmit="return validateForm()"
-              action="<?php  echo $_SERVER['PHP_SELF']?>">
-
+          <form name="user_details" id="user_details" enctype="multipart/form-data" method="post" action=<?=$_SERVER['PHP_SELF'] ?> onsubmit="return validateForm()">
+  
 
               <div class="row">
                 <div class="input-field col s12">
@@ -139,12 +151,21 @@ if(isset($_POST['btn-save'])){
                 </div>
               </div>
 
+              <div class="row">
+                <div class="input-field col s12">
+                  <input type="file" name="fileToUpload" id="fileToUpload" />
+                  <label for="fileToUpload">Profile image:</label>
+                </div>
+              </div>
+
 
           </div>
 
 
           <button class="waves-effect waves-light btn" type="submit" name="btn-save" required placeholder="Submit">Add
             Records</button>
+            <!-- create hidden controls to store client utc date and time zone -->
+         
 
           <a
               href="login.php">Login</a>
@@ -158,9 +179,6 @@ if(isset($_POST['btn-save'])){
           <script src="https://code.jquery.com/jquery-2.1.1.min.js"></script>
           <script src="js/materialize.js"></script>
    
-        </body>
-
-        </html>
-        </body>
-
+    
+</body>
         </html>

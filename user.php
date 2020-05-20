@@ -1,6 +1,7 @@
 <?php
 include "crud.php";
 include "authenticate.php";
+include_once 'DBConnector.php';
 
 class User implements crud,Authenticator{
     private $user_id;
@@ -36,15 +37,16 @@ class User implements crud,Authenticator{
 
     */
 
-    public function save(){
-            $con = new DBConnector();
+    public function save($target_file){
+           $con = new DBConnector;
             $fn = $this->first_name;
             $ln = $this->last_name;
             $city = $this->city_name;
             $uname = $this->username;
+            
             $this->hashPassword();
             $pass=$this->password;
-            $res = mysqli_query($con->conn,"INSERT INTO user(first_name, last_name,user_city,username,password)VALUES('$fn','$ln','$city','$uname','$pass')") or die("Error " .mysql_error());    
+            $res = mysqli_query($con->conn,"INSERT INTO user(first_name, last_name,user_city,username,password,image)VALUES('$fn','$ln','$city','$uname','$pass','$target_file')") or die("Error " .mysql_error());    
             return $res;
             $con->closeDatabase();
         }

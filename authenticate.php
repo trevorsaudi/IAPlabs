@@ -5,6 +5,7 @@ interface Authenticator{
     public function isPasswordCorrect($username,$password);
     public function login();
     public function logout();
+
    
 }
 
