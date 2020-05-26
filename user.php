@@ -10,6 +10,8 @@ class User implements crud,Authenticator{
     private $city_name;
     private $username;
     private $password;
+    private $UTC_timestamp;
+    private $offset;
 
 //class constructor initialized our variable so they  can be instanciated from anywhere
     function __construct($first_name, $last_name,$city_name,$username,$password){
@@ -18,8 +20,28 @@ class User implements crud,Authenticator{
         $this->city_name=$city_name;
         $this->username=$username;
         $this->password =$password;
+  
 
     }
+
+       //user id setter
+       public function setUTC_timestamp($UTC_timestamp){
+        $this->UTC_timestamp = $UTC_timestamp;
+    }
+    //user id getter
+    public function getUTC_timestamp(){
+        return $this->$UTC_timestamp;
+    }
+
+        //user id setter
+        public function setOffset($offset){
+            $this->offset = $offset;
+        }
+        //user id getter
+        public function getOffset(){
+            return $this->$offset;
+        }
+    
 
 
     //user id setter
@@ -44,9 +66,11 @@ class User implements crud,Authenticator{
             $city = $this->city_name;
             $uname = $this->username;
             
+            $offset = $this->offset;
+            $UTC_timestamp = $this->UTC_timestamp;
             $this->hashPassword();
             $pass=$this->password;
-            $res = mysqli_query($con->conn,"INSERT INTO user(first_name, last_name,user_city,username,password,image)VALUES('$fn','$ln','$city','$uname','$pass','$target_file')") or die("Error " .mysql_error());    
+            $res = mysqli_query($con->conn,"INSERT INTO users(first_name, last_name,user_city,username,password,image,created_time,offset)VALUES('$fn','$ln','$city','$uname','$pass','$target_file','$UTC_timestamp','$offset')") or die("Error " .mysqli_error($con->conn));    
             return $res;
             $con->closeDatabase();
         }

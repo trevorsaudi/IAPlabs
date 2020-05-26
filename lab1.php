@@ -1,7 +1,7 @@
         <!-- inputting details to the database -->
         <?php
 include_once 'DBConnector.php';
-include_once 'user.php';
+include_once 'User.php';
 include_once 'fileUploader.php';
 
 $con = new DBConnector;//Creating the database connection
@@ -14,14 +14,20 @@ if(isset($_POST['btn-save'])){
     $username = $_POST['username'];
     $password = $_POST['password'];
 
-    // $utc_timestamp = $_POST['utc_timestamp'];
-    // $offset = $_POST['time_zone_offset'];
+    $utc_timestamp = $_POST['utc_timestamp'];
+    $offset = $_POST['time_zone_offset'];
 
 
     // create a user object
     //we create the object using our constructor to initialize our variables further
 
     $user = new User($first_name, $last_name, $city,$username,$password);
+    
+      //Pass timezone information to database
+      
+      $user->setUTC_timestamp($utc_timestamp);
+      $user->setOffset($offset);
+      
     if(!$user->validateForm()){
       $user->createFormErrorSessions();
       header("Refresh:0");
@@ -69,7 +75,7 @@ if(isset($_POST['btn-save'])){
           <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
           <link href="css/materialize.css" type="text/css" rel="stylesheet" media="screen,projection" />
         <script src="https://ajax.googleapis.com/ajax/libs.jquery/1.12.4/jquery.min.js"></script>
-        <script type="text/javascript"src="timezone.js"></script>
+       
           <link href="css/style.css" type="text/css" rel="stylesheet" media="screen,projection" />
         </head>
 
@@ -158,22 +164,44 @@ if(isset($_POST['btn-save'])){
                 </div>
               </div>
 
+                <!-- create hidden controls to store client utc date and time zone -->
+         <input type="hidden" name="utc_timestamp" id="utc_timestamp" value="" />
+         <input type="hidden" name="time_zone_offset" id="time_zone_offset" value="" />
+
+     
+
 
           </div>
 
 
           <button class="waves-effect waves-light btn" type="submit" name="btn-save" required placeholder="Submit">Add
             Records</button>
-            <!-- create hidden controls to store client utc date and time zone -->
-         
-
-          <a
+               <a
               href="login.php">Login</a>
 
           </form>
           </div>
 
-
+          <script type="text/javascript">
+        $(document).ready(function () {
+    /* Returns nummber of minutes ahead or behind green wich meridian*/
+   
+    var offset = new Date().getTimezoneOffset();
+   
+    /*return number of milliseconds since 1970/01/01:*/
+    var timestamp = new Date().getTime();
+   
+    /*Convert our time to universal Time coordinated / Universal Coordinated time */
+   
+    var utc_timestamp = timestamp + (60000 * offset);
+   
+    //Passing the values to hidden inputs upon form submission
+    $("#submit").click(function (event) {
+     $('#utc_timestamp').val(utc_timestamp);
+     $('#time_zone_offset').val(offset)
+    });
+   
+   });</script>
 
           <!--  Scripts-->
           <script src="https://code.jquery.com/jquery-2.1.1.min.js"></script>
