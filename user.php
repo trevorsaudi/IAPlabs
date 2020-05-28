@@ -151,7 +151,7 @@ class User implements crud,Authenticator{
         public function isPasswordCorrect($username,$password){
             $con = new DBConnector;
             $found = false;
-            $res = mysqli_query($con->conn,'SELECT * FROM user') or die("Error" .mysql_error());
+            $res = mysqli_query($con->conn,'SELECT * FROM user') or die("Error" .mysqli_error($con->conn));
        
        while($row = $res->fetch_assoc()){
            if(password_verify($password,$row['password'] && $username == $row['username'])){
