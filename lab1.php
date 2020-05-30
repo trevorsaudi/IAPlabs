@@ -124,32 +124,39 @@
         </div>
 
         <div class="form-label-group">
+        <label for="inputEmail">First Name</label>
             <input name="first_name" type="text" id="inputEmail" class="form-control" placeholder="First Name" autofocus>
-            <label for="inputEmail">First Name</label>
+           
         </div>
 
         <div class="form-label-group">
+        <label for="inputLastname">Last Name</label>
             <input name="last_name" type="text" id="inputLastname" class="form-control" placeholder="Last Name">
-            <label for="inputLastname">Last Name</label>
+        
         </div>
 
         <div class="form-label-group">
+        <label for="inputPassword">City Name</label>
             <input name="city_name" type="text" id="inputPassword" class="form-control" placeholder="City Name">
-            <label for="inputPassword">City Name</label>
+           
         </div>
 
         <div class="form-label-group">
+        <label for="inputUsername">Username</label>
             <input name="username" type="text" id="inputUsername" class="form-control" placeholder="Username">
-            <label for="inputUsername">Username</label>
+        
         </div>
         <div class="form-label-group">
-            <input name="password" type="text" id="inputPassword1" class="form-control" placeholder="Password">
-            <label for="inputPassword1">Password</label>
+        <label for="inputPassword1">Password</label>
+            <input name="password" type="password" id="inputPassword1" class="form-control" placeholder="Password">
+            
         </div>
+        <br>
 
         <div class="form-label-group">
             <input type="file" name="filetoUpload" class="form-control-file" id="exampleFormControlFile1">        
         </div>
+        <br>
 
         
         <button name="btn-save" class="btn btn-primary" type="submit">SAVE</button>
@@ -217,3 +224,7 @@
         $('#example').DataTable();
     } );
 </script>
+
+
+
+
