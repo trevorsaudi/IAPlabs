@@ -95,7 +95,7 @@
             $sql = "SELECT * FROM user";
             $res = mysqli_query($this->con->conn,$sql) or die("Error " .mysqli_error($con->conn));    
       
-            return $result;
+            return $res;
         }
         public function readUnique(){return null;}
         public function search(){return null;}
@@ -167,8 +167,11 @@
 
         public function isUserExists($username){
             $sql = "SELECT * FROM user where username='$username'";
-            $result = $this->conn->getConnection()->query($sql) or die('SQL Error'.$this->conn->getConnection()->error);
-            if($result->num_rows > 0){
+            // $result = $this->conn->getConnection()->query($sql) or die('SQL Error'.$this->conn->getConnection()->error);
+            $res = mysqli_query($this->con->conn,$sql) or die("Error " .mysqli_error($con->conn));    
+      
+           
+            if($res->num_rows > 0){
                 return true;
             }
             return false;
