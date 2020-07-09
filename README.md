@@ -8,10 +8,10 @@ Consists of all labs before the laravel exercise
 Consists of the laravel exercise
 To run this lab successfully excute the following commands
 
-* Composer install 
+***Composer install***
 - to install all dependencies
 
-* php artisan migrate 
+***php artisan migrate*** 
 - to run all migrations - the database name is homestead, the user is root
 
 ***If you experience a server 500 error run the following command***
