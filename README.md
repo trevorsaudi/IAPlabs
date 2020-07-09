@@ -14,8 +14,8 @@ To run this lab successfully excute the following commands
 ***php artisan migrate*** 
 - to run all migrations - the database name is homestead, the user is root
 
-***If you experience a server 500 error run the following command***
+***If you experience a server 500 error execute the following steps***
 - Rename the .env.example file to .env 
 - then run the following command
 
-* php artisan key:generate
+***php artisan key:generate***
