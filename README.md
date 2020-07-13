@@ -1,12 +1,19 @@
 # IAPlabs
-My labs have been refactored into 2 files - lab 1 and lab 5
+My labs have been refactored into 4 files - lab 1, lab 5, the external app and the api file
 
 # lab1
 Consists of all labs before the laravel exercise
 
+# external app
+Consists of the ordering feature
+
+# api
+The api implementation of the ordering feature lives here
+
 # lab5 
 Consists of the laravel exercise
 To run this lab successfully excute the following commands
+
 
 ***Composer install***
 - to install all dependencies
