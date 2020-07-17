@@ -18,13 +18,12 @@
     /api/v1/student/1 - to delete student with id 1
 
 
-***INSERTING A NEW USER TO THE DATABASE***
+***INSERTING ONE STUDENT***
 /submit
+
     ***usage***
-    Supply the following parameters on Postman as Keys
-    firstname
-    lastname
-    groupnumber
-
-
+    supply the following parameter on postman
+         firstname
+         lastname
+         groupnumber
 
