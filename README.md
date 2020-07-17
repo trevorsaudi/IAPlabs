@@ -26,3 +26,6 @@ To run this lab successfully excute the following commands
 - then run the following command
 
 ***php artisan key:generate***
+
+
+Copyright (C) [2020] [Trevor Saudi]
